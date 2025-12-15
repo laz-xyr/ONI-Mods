@@ -106,7 +106,8 @@
 	<!--Copy the mod to the install folder.-->
   <Target Name="CopyArtifactsToInstallFolder" AfterTargets="ClearInstallFolder" Condition=" '$(ShouldDistribute)' != 'false' ">
     <ItemGroup>
-      <AnimFiles Include="$(ProjectDir)\anim\**\*.*" />
+	  <PreviousFiles Include="$(ProjectDir)\archived_versions\**" />
+	  <AnimFiles Include="$(ProjectDir)\anim\**\*.*" />
       <WorldGenFiles Include="$(ProjectDir)\worldgen\**\*.*" />
       <YamlFiles Include="$(ProjectDir)\*.yaml" />
       <SpriteFiles Include="$(ProjectDir)\*.dds" />
@@ -119,6 +120,7 @@
 
 
 	</ItemGroup>
+    <Copy SourceFiles="@(PreviousFiles)" DestinationFiles="@(PreviousFiles->'$(InstallFolder)\archived_versions\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(AnimFiles)" DestinationFiles="@(AnimFiles->'$(InstallFolder)\anim\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(WorldGenFiles)" DestinationFiles="@(WorldGenFiles->'$(InstallFolder)\worldgen\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(YamlFiles)" DestinationFolder="$(InstallFolder)" />

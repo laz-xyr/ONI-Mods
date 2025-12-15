@@ -63,7 +63,7 @@ namespace Unlock_Cheat.Harvest
         }
 
         [HarmonyPatch(typeof(BuildingTemplates))]
-        [HarmonyPatch("ExtendBuildingToClusterCargoBay")]
+        [HarmonyPatch("ExtendBuildingToClusterCargoBay", new Type[] { typeof(GameObject), typeof(float), typeof(List<Tag>), typeof(List<Tag>), typeof(CargoBay.CargoType) })]
         public class BuildingTemplates_ExtendBuildingToClusterCargoBay
         {
             public static void Prefix(ref float capacity)
