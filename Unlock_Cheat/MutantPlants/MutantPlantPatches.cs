@@ -19,10 +19,6 @@ namespace Unlock_Cheat.MutantPlants
             if (mutant != null && mutant.TryGetComponent<KPrefabID>(out kprefabID))
             {
 
-                bool Is_SelfHarvest = (mutant.MutationIDs != null && mutant.MutationIDs.Contains("SelfHarvest"));
-              //  bool Has_Mutation = (mutant.MutationIDs != null && mutant.MutationIDs.Any(e => !e.Equals("SelfHarvest")));
-
-
                 if ( (mutant.IsOriginal && !kprefabID.HasTag(GameTags.PlantBranch)) || kprefabID.HasTag(GameTags.Seed) || kprefabID.HasTag(GameTags.CropSeed) || 
                     (kprefabID.HasTag(GameTags.MutatedSeed)  && (SingletonOptions<Options>.Instance.MutantPlant_Mult  )))
                 {
@@ -30,15 +26,6 @@ namespace Unlock_Cheat.MutantPlants
                     Game.Instance.userMenu.AddButton(mutant.gameObject, button, 1f);
 
                     }
-
-                //    if (SingletonOptions<Options>.Instance.MutantPlant && SingletonOptions<Options>.Instance.MutantPlant_SelfHarvest_Independent && kprefabID.HasTag(GameTags.Plant))
-                //{
-                     
-                //    KIconButtonMenu.ButtonInfo button1 = Is_SelfHarvest ? new KIconButtonMenu.ButtonInfo("action_harvest", Languages.UI.USERMENUACTIONS.SELFHARVEST.CANCEL_NAME, new System.Action(mutant.SelfHarvest), global::Action.NumActions, null, null, null, Languages.UI.USERMENUACTIONS.SELFHARVEST.CANCEL_TOOLTIP, true):
-                //        new KIconButtonMenu.ButtonInfo("action_harvest", Languages.UI.USERMENUACTIONS.SELFHARVEST.NAME, new System.Action(mutant.SelfHarvest), global::Action.NumActions, null, null, null, Languages.UI.USERMENUACTIONS.SELFHARVEST.TOOLTIP, true);
-                //        Game.Instance.userMenu.AddButton(mutant.gameObject, button1, 1f);
-
-                //    }
 
                     if (!mutant.IsOriginal && !mutant.IsIdentified)
                 {
@@ -99,49 +86,24 @@ namespace Unlock_Cheat.MutantPlants
             }
         }
 
-      
 
-        //[HarmonyPatch(typeof(PlantMutation), "ApplyFunctionalTo")]
-        //public static class PlantMutation_ApplyFunctionalTo
-        //{
-        //    public static void Postfix(PlantMutation __instance, MutantPlant target)
-        //    {
 
-        //            SeedProducer component = target.GetComponent<SeedProducer>();
-
-        //            if (component != null && component.seedInfo.productionType == SeedProducer.ProductionType.Sterile)
-        //            {
-        //                component.Configure(component.seedInfo.seedId, SeedProducer.ProductionType.Harvest, 1);
-        //            }
-
-        //    }
-        //}
-
-        [HarmonyPatch(typeof(PlantMutations))]
-        public static class PlantMutation_PlantMutations
+        [HarmonyPatch(typeof(PlantMutation), "ApplyFunctionalTo")]
+        public static class PlantMutation_ApplyFunctionalTo
         {
-
-            [HarmonyPostfix]
-            [HarmonyPatch(MethodType.Constructor, new Type[] { typeof(ResourceSet) })]
-            public static void Postfix1(PlantMutations __instance)
+            public static void Postfix(PlantMutation __instance, MutantPlant target)
             {
 
-                PlantMutation plantMutation = new PlantMutation("SelfHarvest", Languages.UI.USERMENUACTIONS.SELFHARVEST.MutationNAME, Languages.UI.USERMENUACTIONS.SELFHARVEST.TOOLTIP);
-                plantMutation.ForceSelfHarvestOnGrown();
-                plantMutation.originalMutation = true;
-                __instance.Add(plantMutation);
+                SeedProducer component = target.GetComponent<SeedProducer>();
+
+                if (component != null && component.seedInfo.productionType == SeedProducer.ProductionType.Sterile)
+                {
+                    component.Configure(component.seedInfo.seedId, SeedProducer.ProductionType.Harvest, 1);
+                }
 
             }
-
-
-            //[HarmonyPostfix]
-            //[HarmonyPatch("AddPlantMutation")]
-            //public static void Postfix(PlantMutation __result)
-            //{
-            //    __result.ForceSelfHarvestOnGrown();
-            //}
-
         }
+
 
         [HarmonyPatch(typeof(PlantMutation), "AttributeModifier")]
         public static class PlantMutation_AttributeModifier

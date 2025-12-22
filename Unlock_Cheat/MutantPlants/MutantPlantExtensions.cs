@@ -65,19 +65,6 @@ namespace Unlock_Cheat.MutantPlants
            // List<string> strings = new List<string> { };
             if (mutant != null)
             {
-
-                //strings.Add(Db.Get().PlantMutations.GetRandomMutation(mutant.PrefabID().Name).Id);
-                //if (mutant.MutationIDs != null)
-                //{
-                //    mutant.delattr();
-                //    //if (mutant.MutationIDs.Contains("SelfHarvest"))
-                //    //{
-                //    //    strings.Add("SelfHarvest");
-
-                //    //}
-
-
-                //}
                 mutant.Mutate();
 
                 mutant.ApplyMutator();
@@ -86,86 +73,6 @@ namespace Unlock_Cheat.MutantPlants
         }
 
 
-        internal static void SelfHarvest(this MutantPlant mutant)
-        {
-
-            bool flag = (mutant.MutationIDs != null && mutant.MutationIDs.Contains("SelfHarvest"));
-
-                mutant.SelfHarvest(flag);
-            }
-        internal static void SelfHarvest(this MutantPlant mutant, bool allowedHarvest = false)
-        {
-
-            if (mutant != null)
-            {
-
-                List<string> strings = null;
-
-                if (allowedHarvest && mutant.MutationIDs != null && mutant.MutationIDs.Contains("SelfHarvest"))
-                {
-
-
-                    strings = mutant.MutationIDs;
-                    strings.Remove("SelfHarvest");
-                    mutant.SetSubSpecies(new List<string> { });
-                    mutant.ApplyMutator(false);
-                    mutant.Analyze();
-                    //Attributes attributes = mutant.GetAttributes();
-                    //attributes.Remove(new AttributeModifier(Db.Get().Amounts.OldAge.maxAttribute.Id, -0.999999f, Strings.Get(new StringKey("STRINGS.CREATURES.PLANT_MUTATIONS." + "heavyFruit".ToUpper() + ".NAME")), true, false, true));
-                    //MutantPlantExtensions.DiscoverSilentlyAndIdentifySubSpecies(mutant.GetSubSpeciesInfo());
-                     
-
-                    if (SingletonOptions<Options>.Instance.MutantPlant_SelfHarvest_Independent)
-                    {
-
-                        KMonoBehaviour kMonoBehaviour = mutant;
-                        if (kMonoBehaviour != null)
-                        {
-                            PopFXManager.Instance.SpawnFX(PopFXManager.Instance.sprite_Negative, Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.PLANT_DO_NOT_SELFHARVEST, kMonoBehaviour.transform, 1.5f, false);
-
-                        }
-
-                    }
-
-                   
-                }
-
-                else if (!allowedHarvest)
-                {
-                   
-                    strings = new List<string> { };
-                   if (mutant.MutationIDs!=null && mutant.MutationIDs.Contains("SelfHarvest"))
-                    {
-                       return;
-                   }
-                   //else if (mutant.MutationIDs!=null )
-                   // {
-                   //     mutant.delattr();
-
-                   // }
-
-                    strings.Add("SelfHarvest");
-                    mutant.SetSubSpecies(strings);
-                    mutant.ApplyMutator(false);
-                    mutant.Analyze();
-
-                    //mutant.ApplyMutations();
-                    // Attributes attributes = mutant.GetAttributes();
-                    //attributes.Add(new AttributeModifier(Db.Get().Amounts.OldAge.maxAttribute.Id, -0.999999f, Strings.Get(new StringKey("STRINGS.CREATURES.PLANT_MUTATIONS." + "heavyFruit".ToUpper() + ".NAME")), true, false, true));
-                    //MutantPlantExtensions.DiscoverSilentlyAndIdentifySubSpecies(mutant.GetSubSpeciesInfo());
-                    if (SingletonOptions<Options>.Instance.MutantPlant_SelfHarvest_Independent)
-                    {
-                        KMonoBehaviour kMonoBehaviour = mutant;
-                        if (kMonoBehaviour != null)
-                        {
-                            PopFXManager.Instance.SpawnFX(PopFXManager.Instance.sprite_Plus, Languages.UI.USERMENUACTIONS.CANCEL_HARVEST_WHEN_READY.PLANT_SELFHARVEST, kMonoBehaviour.transform, 1.5f, false);
-                        } 
-                    }                            
-                }
-
-            }
-          
-        }
         internal static void ApplyMutator(this MutantPlant mutant,bool pop = true)
         {
             if (mutant != null)
@@ -229,71 +136,6 @@ namespace Unlock_Cheat.MutantPlants
                 DetailsScreen.Instance.Trigger(-1514841199, null);
             }
         }
-        public static void delattr(this MutantPlant mutant)
-        {
-            if (mutant.IsOriginal)
-            {
-                return;
-            }
-            KBatchedAnimController component = mutant.GetComponent<KBatchedAnimController>();
-            component.TintColour = Color.white;
-            foreach (string mutationID in mutant.MutationIDs)
-            {
-                PlantMutation mutation = Db.Get().PlantMutations.Get(mutationID);
-                Attributes attributes = mutant.GetAttributes();
-
-                mutation.RemoveFrom(attributes);
-
-                if (mutation.symbolOverrideInfo != null && mutation.symbolOverrideInfo.Count > 0)
-                {
-                    SymbolOverrideController component2 = mutant.GetComponent<SymbolOverrideController>();
-                    if (component2 != null)
-                    {
-                        foreach (PlantMutation.SymbolOverrideInfo symbolOverrideInfo in mutation.symbolOverrideInfo)
-                        {
-                            KAnim.Build.Symbol symbol = Assets.GetAnim(symbolOverrideInfo.sourceAnim).GetData().build.GetSymbol(symbolOverrideInfo.sourceSymbol);
-                            component2.RemoveSymbolOverride(symbolOverrideInfo.targetSymbolName, 0);
-                        }
-                    }
-                }
-                component.TintColour = Color.white;
-
-                List<string> symbolTintTargets = Traverse.Create(mutation).Field("symbolTintTargets").GetValue<List<string>>();
-                List<string> symbolScaleTargets = Traverse.Create(mutation).Field("symbolScaleTargets").GetValue<List<string>>();
-
-                    for (int i = 0; i < mutant.transform.childCount; i++)
-                    {
-
-                        GameObject gameObject = mutant.transform.GetChild(i).gameObject;
-
-                        if ( gameObject.name.EndsWith("_BGFX")|| gameObject.name.EndsWith("_FGFX"))
-                        {
-                            GameObject.Destroy(gameObject);
-                        }
-
-                }
-
-                if (symbolTintTargets.Count > 0)
-                {
-                    for (int i = 0; i < symbolTintTargets.Count; i++)
-                    {
-                        component.SetSymbolTint(symbolTintTargets[i], Color.white);
-                    }
-                }
-                if (symbolScaleTargets.Count > 0)
-                {
-                    for (int j = 0; j < symbolScaleTargets.Count; j++)
-                    {
-                        component.SetSymbolScale(symbolScaleTargets[j],1f);
-                    }
-                }
-
-            }
-
-            mutant.SetSubSpecies(null);
-
-        }
-
     }
 
 }

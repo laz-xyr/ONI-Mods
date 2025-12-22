@@ -57,12 +57,6 @@ namespace Unlock_Cheat
 
         public bool MutantPlant_SelfHarvest { get; set; }
 
-
-        //[JsonProperty]
-        //[Option("启用植物自动收获按钮", "单独生成一个自动收获按钮,需要开启植物变异", "植物变异")]
-        public bool MutantPlant_SelfHarvest_Independent { get; set; }
-
-
         [JsonProperty]
         [Option("太空挖矿倍率", "用更少的钻石挖更多的矿", "太空挖矿")]
         [Limit(1f,1000f)]
@@ -112,7 +106,6 @@ namespace Unlock_Cheat
             this.MutantPlant = true;
             this.MutantPlant_Mult = false;
             this.MutantPlant_SelfHarvest= false;
-            this.MutantPlant_SelfHarvest_Independent = false;
             this.Harvest_mult = 1f;
             this.Harvest_storage_mult = 1f;
             this.Harvest_poi_mult = 1f;
