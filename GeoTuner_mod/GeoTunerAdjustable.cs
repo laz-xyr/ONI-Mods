@@ -69,6 +69,10 @@ namespace GeoTuner_mod
             }
         }
 
+        bool IUserControlledCapacity.ControlEnabled()
+		{
+			return true;
+		}
         public LocString CapacityUnits
         {
             get
