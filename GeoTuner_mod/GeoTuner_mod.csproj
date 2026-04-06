@@ -11,8 +11,6 @@
     <Title>调谐仪(多合一)</Title>
     <Description>间歇泉协调多合一.</Description>
 	  <UsesPLib>true</UsesPLib>
-	  <TargetFramework>net472</TargetFramework>
-	  <LangVersion>10.0</LangVersion>
 
   </PropertyGroup>
   

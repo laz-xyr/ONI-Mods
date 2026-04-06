@@ -1,0 +1,95 @@
+msgid ""
+msgstr ""
+"Application: Oxygen Not Included"
+"POT Version: 2.0"
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.CANCEL_HARVEST_WHEN_READY.NAME
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.CANCEL_HARVEST_WHEN_READY.NAME"
+msgid "禁用复制人收获"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.CANCEL_HARVEST_WHEN_READY.PLANT_SELFHARVEST
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.CANCEL_HARVEST_WHEN_READY.PLANT_SELFHARVEST"
+msgid "启用自动掉落"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.CANCEL_HARVEST_WHEN_READY.TOOLTIP
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.CANCEL_HARVEST_WHEN_READY.TOOLTIP"
+msgid "复制人不自动收获这株植物,改为成熟后自动掉落"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.NAME
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.NAME"
+msgid "启用复制人收获"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.PLANT_DO_NOT_SELFHARVEST
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.PLANT_DO_NOT_SELFHARVEST"
+msgid "禁用自动掉落(需要保存加载生效)"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.Reload
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.Reload"
+msgid "需要保存加载生效"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.TOOLTIP
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.HARVEST_WHEN_READY.TOOLTIP"
+msgid "当这株植物成熟时，复制人会收获,取消自动收获"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.IDENTIFY_MUTATION.NAME
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.IDENTIFY_MUTATION.NAME"
+msgid "分析"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.IDENTIFY_MUTATION.TOOLTIP
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.IDENTIFY_MUTATION.TOOLTIP"
+msgid "分析种子不需要<link=\"GENETICANALYSISSTATION\">植物分析仪</link>"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.MUTATOR.NAME
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.MUTATOR.NAME"
+msgid "变异"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.MUTATOR.TOOLTIP
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.MUTATOR.TOOLTIP"
+msgid "将种子或植物随机变异."
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.CANCEL_NAME
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.CANCEL_NAME"
+msgid "禁用植物自动收获"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.CANCEL_TOOLTIP
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.CANCEL_TOOLTIP"
+msgid "植物成熟时不会自动掉落(切换状态后需要保存加载一次)"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.MutationNAME
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.MutationNAME"
+msgid "植物自动收获"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.NAME
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.NAME"
+msgid "启用植物自动收获"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.TOOLTIP
+msgctxt "Unlock_Cheat.Languages.UI.USERMENUACTIONS.SELFHARVEST.TOOLTIP"
+msgid "植物成熟时自动掉落"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERTEXT.LAST_OWNED
+msgctxt "Unlock_Cheat.Languages.UI.USERTEXT.LAST_OWNED"
+msgid "这个皮肤数量是你拥有的最后的一件，分解后就没有了"
+msgstr ""
+
+#. Unlock_Cheat.Languages.UI.USERTEXT.NO_OWNED
+msgctxt "Unlock_Cheat.Languages.UI.USERTEXT.NO_OWNED"
+msgid "这个皮肤你暂未拥有,只有使用权"
+msgstr ""
+

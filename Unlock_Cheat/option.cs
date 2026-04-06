@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 using PeterHan.PLib.Options;
 using KMod;
 using Klei;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Unlock_Cheat
 {
@@ -11,7 +13,7 @@ namespace Unlock_Cheat
     [ModInfo("", null, false)]
     [ConfigFile("config.json", true, true)]
     [RestartRequired]
-    internal  sealed class Options : SingletonOptions<Options>
+    internal sealed class Options : SingletonOptions<Options>
     {
 
         [JsonProperty]
@@ -101,6 +103,34 @@ namespace Unlock_Cheat
         [Option("擦拭", "擦拭无视液体质量", null)]
         public bool MopTool { get; set; }
 
+        [JsonProperty]
+        [Option("菌泥", "", "禁止物质挥发")]
+        public bool SlimeMold { get; set; } = true;
+
+        [JsonProperty]
+        [Option("污染水", "", "禁止物质挥发")]
+        public bool DirtyWater { get; set; } = true;
+
+        [JsonProperty]
+        [Option("污染土", "", "禁止物质挥发")]
+        public bool ToxicSand { get; set; } = true;
+
+        [JsonProperty]
+        [Option("污染泥", "", "禁止物质挥发")]
+        public bool ToxicMud { get; set; } = true;
+
+        [JsonProperty]
+        [Option("漂白石", "", "禁止物质挥发")]
+        public bool BleachStone { get; set; } = true;
+
+        private static readonly Dictionary<string, SimHashes> Sublimates_ElementMappings = new Dictionary<string, SimHashes>
+    {
+        [nameof(SlimeMold)] = SimHashes.SlimeMold,
+        [nameof(DirtyWater)] =  SimHashes.DirtyWater,
+        [nameof(ToxicSand)]=  SimHashes.ToxicSand,
+        [nameof(ToxicMud)] = SimHashes.ToxicMud,
+        [nameof(BleachStone)] = SimHashes.BleachStone
+    };
         public Options()
         {
             this.Achievement = true;
@@ -120,6 +150,14 @@ namespace Unlock_Cheat
             this.HighEnergyParticle = false;
             this.MopTool = true;
 
+        }
+
+        public List<SimHashes> GetSublimates()
+        {
+            return Sublimates_ElementMappings
+               .Where(kv => (bool)this.GetType().GetProperty(kv.Key)?.GetValue(this))
+               .Select(kv => kv.Value)
+               .ToList(); ;
         }
     }
 }

@@ -1,0 +1,4 @@
+APIVersion: 2
+supportedContent: ALL
+minimumSupportedBuild: 469369
+version: "2024.6.30.1"

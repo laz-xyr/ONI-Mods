@@ -1,0 +1,70 @@
+msgid ""
+msgstr ""
+"Application: Oxygen Not Included"
+"POT Version: 2.0"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.GEOTUNERADJUSTABLE.TITLE
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.GEOTUNERADJUSTABLE.TITLE"
+msgid "GEYSER_GEOTUNED"
+msgstr "地质调谐"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.GEOTUNERADJUSTABLE.TOOLTIP
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.GEOTUNERADJUSTABLE.TOOLTIP"
+msgid "This geyser is being boosted {0} tuning tuning  by {1} <style=\"KKeyword\">Geotuners</style>"
+msgstr "这个间歇泉由 {1} 个<style=\"KKeyword\">地质调谐仪</style>调谐了 {0} 次"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.GEOTUNERADJUSTABLE.UNITS
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.GEOTUNERADJUSTABLE.UNITS"
+msgid "tuning"
+msgstr "调谐"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.BROKER_VANILLA.TITLE
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.BROKER_VANILLA.TITLE"
+msgid "BROKER VANILLA"
+msgstr "调谐仪原版限制"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.BROKER_VANILLA.TOOLTIP
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.BROKER_VANILLA.TOOLTIP"
+msgid "Geotuners can tune a GEYSER simultaneously like VANILLA"
+msgstr "地质调谐仪像原版一样同时调谐一个泉"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.ENERGYCONSUMER.TITLE
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.ENERGYCONSUMER.TITLE"
+msgid "Energy Consumption"
+msgstr "调谐仪耗电量"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.ENERGYCONSUMER.TOOLTIP
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.ENERGYCONSUMER.TOOLTIP"
+msgid "Increase Geotuners's Energy Consumption"
+msgstr "地质调谐仪耗电量是否同步增加"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.GEOTUNERS_RATIO.TITLE
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.GEOTUNERS_RATIO.TITLE"
+msgid "Resource Consumption Ratio"
+msgstr "调谐仪资源消耗倍率"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.GEOTUNERS_RATIO.TOOLTIP
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.GEOTUNERS_RATIO.TOOLTIP"
+msgid "Geotuner's resource consumption ratio"
+msgstr "地质调谐仪消耗资源的倍率"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.GEYSER_RATIO.TITLE
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.GEYSER_RATIO.TITLE"
+msgid "Products Ratio"
+msgstr "间歇泉产出倍率"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.GEYSER_RATIO.TOOLTIP
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.GEYSER_RATIO.TOOLTIP"
+msgid "Geyser's Products Ratio"
+msgstr "间歇泉产物倍率"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.MAX_TUNING.TITLE
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.MAX_TUNING.TITLE"
+msgid "Max Tuning Count"
+msgstr "调谐最大值"
+
+#. GeoTuner_mod.UI.UISIDESCREENS.OPTION.MAX_TUNING.TOOLTIP
+msgctxt "GeoTuner_mod.UI.UISIDESCREENS.OPTION.MAX_TUNING.TOOLTIP"
+msgid "Geotuner's max tuning count"
+msgstr "修改地质调谐仪最大次数"
+
