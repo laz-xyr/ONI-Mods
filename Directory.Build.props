@@ -15,17 +15,19 @@
 </ItemGroup>
 
 	<PropertyGroup>
-    <TargetFramework>net471</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <TargetFramework>netstandard2.1</TargetFramework>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	<LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	<minimumSupportedBuild>469369</minimumSupportedBuild>
-  </PropertyGroup>
+	<minimumSupportedBuild>719533</minimumSupportedBuild>
+	</PropertyGroup>
 
   <!--Default all references to CopyLocal False.-->
   <ItemDefinitionGroup>
     <Reference><Private>False</Private></Reference>
     <ProjectReference><Private>False</Private></ProjectReference>
     <PackageReference><Private>False</Private></PackageReference>
+
   </ItemDefinitionGroup>
 
   <!--Publicized References-->
@@ -41,7 +43,7 @@
 	<Reference Include="Assembly-CSharp-firstpass_public" HintPath="../lib/Assembly-CSharp-firstpass_public.dll" Condition="'$(UsesAzeLib)' == 'true'" />
 	<Reference Include="Unity.TextMeshPro_public" HintPath="../lib/Unity.TextMeshPro_public.dll" Condition="'$(UsesAzeLib)' == 'true'" />
     <!--Meta References-->
-    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="*" />
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="*" Condition=" '$(ILRepack)' != 'false'"/>
     <PackageReference Include ="MSBuildTasks" Version="*"/>
 	<PackageReference Include="Aze.Publicise.MSBuild.Task" Version="1.0.0" Condition="'$(UsesAzeLib)' == 'true'" />
 
@@ -80,5 +82,12 @@
 	<LocalFolder>$(ModFolder)\local\$(MSBuildProjectName)</LocalFolder>
 
   </PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+		<!-- Choose the correct version to reduce log spam w.r.t. mismatched assembly versions -->
+		<Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+			<SpecificVersion>True</SpecificVersion>
+		</Reference>
+	</ItemGroup>
 
 </Project>

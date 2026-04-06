@@ -10,12 +10,7 @@
 	<UsesPLib>false</UsesPLib>
 	<AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
+
   <ItemGroup>
     <None Update="strings\templates.pot">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

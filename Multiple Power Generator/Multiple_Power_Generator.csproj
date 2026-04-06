@@ -9,6 +9,8 @@
     <Title>Multiple_Power_Generator</Title>
     <Description>多倍发电.</Description>
 	  <UsesPLib>true</UsesPLib>
+	  <ILRepack>false</ILRepack>
+
   </PropertyGroup>
   
   <ItemGroup>
