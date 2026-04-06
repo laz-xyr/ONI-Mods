@@ -13,12 +13,12 @@ namespace Unlock_Cheat.Harvest
     internal class Harvest
     {
         [HarmonyPatch(typeof(NoseconeHarvestConfig))]
-        [HarmonyPatch("DoPostConfigureComplete")]
+        [HarmonyPatch("ConfigureBuildingTemplate")]
         public class harvestModule
         {
             public static void Postfix(NoseconeHarvestConfig __instance, GameObject go)
             {
-                go.AddOrGetDef<ResourceHarvestModule.Def>().harvestSpeed = __instance.solidCapacity / __instance.timeToFill * Unlock_Cheat.Options.Harvest_mult;
+                go.AddOrGetDef<ResourceHarvestModule.Def>().harvestSpeed = (__instance.solidCapacity / __instance.timeToFill )* Unlock_Cheat.Options.Harvest_mult;
             }
         }
 
@@ -28,7 +28,7 @@ namespace Unlock_Cheat.Harvest
             [HarmonyPostfix]
             [HarmonyPatch("GetMaxExtractKGFromDiamondAvailable")]
 
-            public static void Postfix1(ref float __result)
+            public static void Postfix(ref float __result)
             {
                 __result *= Unlock_Cheat.Options.Harvest_mult;
             }
@@ -36,7 +36,7 @@ namespace Unlock_Cheat.Harvest
             [HarmonyPrefix]
             [HarmonyPatch("ConsumeDiamond")]
 
-            public static void Prefix1(ref float amount)
+            public static void Prefix(ref float amount)
             {
                 amount /= Unlock_Cheat.Options.Harvest_mult;
             }
@@ -69,6 +69,13 @@ namespace Unlock_Cheat.Harvest
             public static void Prefix(ref float capacity)
             {
                 capacity *= Unlock_Cheat.Options.Harvest_storage_mult;
+
+            }
+
+            public static void Postfix(GameObject template)
+            {
+                RocketModuleHexCellCollector.Def def = template.AddOrGetDef<RocketModuleHexCellCollector.Def>();
+                def.collectSpeed *= Unlock_Cheat.Options.Harvest_storage_mult;
             }
         }
 
