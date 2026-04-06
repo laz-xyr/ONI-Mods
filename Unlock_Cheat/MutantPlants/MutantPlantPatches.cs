@@ -104,6 +104,26 @@ namespace Unlock_Cheat.MutantPlants
             }
         }
 
+        [HarmonyPatch(typeof(PlantMutation), "GetTooltip")]
+        public static class PlantMutation_GetTooltip
+        {
+            public static void Prefix(PlantMutation __instance, bool __state)
+            {
+                if (!__instance.originalMutation)
+                {
+                    __state = false;
+                    __instance.originalMutation = true;
+                }
+            }
+            public static void Postfix(PlantMutation __instance, bool __state)
+            {
+                if (!__state)
+                {
+                    __instance.originalMutation = false;
+                }
+            }
+        }
+
 
         [HarmonyPatch(typeof(PlantMutation), "AttributeModifier")]
         public static class PlantMutation_AttributeModifier
