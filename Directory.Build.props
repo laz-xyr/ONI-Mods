@@ -48,7 +48,7 @@
 	  <!--<PackageReference Include="HarmonyAnalyzers" Version="1.0.0" />-->
     <!--<PackageReference Include="SuppressionAttributes" Version="1.0.0" />-->
     <!--<ProjectReference Include ="../AzeLib/AzeLib.csproj" Private ="true" Condition="'$(UsesAzeLib)' != 'false'"/>-->
-    <PackageReference Include="PLib" Version="*" Private="true" Condition="'$(UsesPLib)' == 'true'" />
+    <PackageReference Include="PLib" Version="4.21.0" Private="true" Condition="'$(UsesPLib)' == 'true'" />
 	  <ProjectReference Include="../Commons/Commons.csproj" Version="*" Private="true" Condition="'$(UseCommons)' == 'true'" />
 
 	  <!--Game References-->
