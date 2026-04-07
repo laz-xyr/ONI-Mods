@@ -3,7 +3,6 @@
   
   <PropertyGroup>
     <AssemblyTitle>GeoTuner_mod</AssemblyTitle>
-	  <minimumSupportedBuild>663500</minimumSupportedBuild>
 
   </PropertyGroup>
 
