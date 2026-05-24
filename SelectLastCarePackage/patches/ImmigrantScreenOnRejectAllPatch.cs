@@ -13,8 +13,13 @@ namespace crazyxyr.SelectLastCarePackage.Patches
     {
         private static float _lastTime;
 
-        public static bool Prefix(ImmigrantScreen __instance)
+        public static bool Prefix(ImmigrantScreen __instance, List<ITelepadDeliverableContainer> ___containers)
         {
+            if (___containers == null || ___containers.Count == 0)
+            {
+                Debug.Log("[最后的补给包-Fix] 没有找到物品列表");
+                return true;
+            }
             if (ModUtils.HasRefreshMod())
             {
                 Debug.Log("启用了刷新选人Mod，跳过");
@@ -30,11 +35,9 @@ namespace crazyxyr.SelectLastCarePackage.Patches
             }
 
             _lastTime = Time.realtimeSinceStartup;
+            ___containers.ForEach(c => UnityEngine.Object.Destroy(c.GetGameObject()));
+            ___containers.Clear();
             Traverse instance = Traverse.Create(__instance);
-            List<ITelepadDeliverableContainer> deliverableContainerList = null;
-            deliverableContainerList = instance.Field("containers").GetValue<List<ITelepadDeliverableContainer>>();
-            deliverableContainerList.ForEach(c => UnityEngine.Object.Destroy(c.GetGameObject()));
-            deliverableContainerList.Clear();
             instance.Method("InitializeContainers").GetValue();
             ImmigrantScreenMethod.ShowButton(__instance);
              _lastTime = Time.realtimeSinceStartup;
