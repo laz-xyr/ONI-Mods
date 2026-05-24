@@ -52,7 +52,7 @@
     <!--Meta References-->
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.45" Condition=" '$(ILRepack)' != 'false'"/>
     <PackageReference Include ="MSBuildTasks" Version="1.5.0.183"/>
-	<PackageReference Include="Aze.Publicise.MSBuild.Task" Version="1.0.0" Condition="'$(UsesAzeLib)' == 'true'" />
+	<PackageReference Include="Aze.Publicise.MSBuild.Task" Version="1.1.0" Condition="'$(UsesAzeLib)' == 'true'" />
 
 	  <!--<PackageReference Include="HarmonyAnalyzers" Version="1.0.0" />-->
     <!--<PackageReference Include="SuppressionAttributes" Version="1.0.0" />-->
