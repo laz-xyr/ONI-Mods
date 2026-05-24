@@ -36,9 +36,9 @@
 					$(GameFolder)/Assembly-CSharp.dll;
 					$(GameFolder)/Assembly-CSharp-firstpass.dll;
                     $(GameFolder)/Unity.TextMeshPro.dll"/>
-    <Reference Include="Assembly-CSharp.dll" HintPath="$(GameFolder)/Assembly-CSharp.dll"   Condition="'$(UsesAzeLib)' != 'true'"/>
-    <Reference Include="Assembly-CSharp-firstpass.dll" HintPath="$(GameFolder)/Assembly-CSharp-firstpass.dll" Condition="'$(UsesAzeLib)' != 'true'" />
-    <Reference Include="Unity.TextMeshPro.dll" HintPath="$(GameFolder)/Unity.TextMeshPro.dll" Condition="'$(UsesAzeLib)' != 'true'" />
+    <Reference Include="Assembly-CSharp.dll" HintPath="../lib/Assembly-CSharp.dll"   Condition="'$(UsesAzeLib)' != 'true'"/>
+    <Reference Include="Assembly-CSharp-firstpass.dll" HintPath="../lib/Assembly-CSharp-firstpass.dll" Condition="'$(UsesAzeLib)' != 'true'" />
+    <Reference Include="Unity.TextMeshPro.dll" HintPath="../lib/Unity.TextMeshPro.dll" Condition="'$(UsesAzeLib)' != 'true'" />
 	<Reference Include="Assembly-CSharp_public" HintPath="../lib/Assembly-CSharp_public.dll"  Condition="'$(UsesAzeLib)' == 'true'" />
 	<Reference Include="Assembly-CSharp-firstpass_public" HintPath="../lib/Assembly-CSharp-firstpass_public.dll" Condition="'$(UsesAzeLib)' == 'true'" />
 	<Reference Include="Unity.TextMeshPro_public" HintPath="../lib/Unity.TextMeshPro_public.dll" Condition="'$(UsesAzeLib)' == 'true'" />
@@ -54,16 +54,16 @@
 	  <ProjectReference Include="../Commons/Commons.csproj" Version="*" Private="true" Condition="'$(UseCommons)' == 'true'" />
 
 	  <!--Game References-->
-    <Reference Include="0Harmony" HintPath="$(GameFolder)/0Harmony.dll" />
-    <Reference Include="Newtonsoft.Json" HintPath="$(GameFolder)/Newtonsoft.Json.dll" />
-    <Reference Include="UnityEngine" HintPath="$(GameFolder)/UnityEngine.dll" />
-    <Reference Include="UnityEngine.CoreModule" HintPath="$(GameFolder)/UnityEngine.CoreModule.dll" />
-    <Reference Include="UnityEngine.ImageConversionModule" HintPath="$(GameFolder)/UnityEngine.ImageConversionModule.dll" />
-    <Reference Include="UnityEngine.ImageConversionModule" HintPath="$(GameFolder)/UnityEngine.IMGUIModule.dll" />
-    <Reference Include="UnityEngine.InputLegacyModule" HintPath="$(GameFolder)/UnityEngine.InputLegacyModule.dll" />
-    <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(GameFolder)/UnityEngine.TextRenderingModule.dll" />
-    <Reference Include="UnityEngine.UI" HintPath="$(GameFolder)/UnityEngine.UI.dll" />
-    <Reference Include="UnityEngine.UIModule" HintPath="$(GameFolder)/UnityEngine.UIModule.dll" />
+    <Reference Include="0Harmony" HintPath="../lib/0Harmony.dll" />
+    <Reference Include="Newtonsoft.Json" HintPath="../lib/Newtonsoft.Json.dll" />
+    <Reference Include="UnityEngine" HintPath="../lib/UnityEngine.dll" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="../lib/UnityEngine.CoreModule.dll" />
+    <Reference Include="UnityEngine.ImageConversionModule" HintPath="../lib/UnityEngine.ImageConversionModule.dll" />
+    <Reference Include="UnityEngine.ImageConversionModule" HintPath="../lib/UnityEngine.IMGUIModule.dll" />
+    <Reference Include="UnityEngine.InputLegacyModule" HintPath="../lib/UnityEngine.InputLegacyModule.dll" />
+    <Reference Include="UnityEngine.TextRenderingModule" HintPath="../lib/UnityEngine.TextRenderingModule.dll" />
+    <Reference Include="UnityEngine.UI" HintPath="../lib/UnityEngine.UI.dll" />
+    <Reference Include="UnityEngine.UIModule" HintPath="../lib/UnityEngine.UIModule.dll" />
   </ItemGroup>
 
   <!--<PropertyGroup>

@@ -10,11 +10,32 @@
 
   <!--Publicise the game's assemblies on rebuilds.-->
 
-	<Target Name="Publicise" AfterTargets="Clean" Condition="'$(UsesAzeLib)' == 'true'">
+	<Target Name="Publicise" AfterTargets="Clean" Condition="'$(UsesAzeLib)' == 'true'  And '$(Configuration)' == 'Debug' ">
 		<Publicise
 		  InputAssemblies="@(PubliciseInputAssemblies)"
 		  OutputPath="../lib/"/>
 	</Target>
+
+	<Target Name="CopyGameDlls" AfterTargets="Clean"  Condition=" '$(Configuration)' == 'Debug'" >
+		<ItemGroup>
+			<GameDlls Include="$(GameFolder)/0Harmony.dll" />
+			<GameDlls Include="$(GameFolder)/Newtonsoft.Json.dll" />
+			<GameDlls Include="$(GameFolder)/UnityEngine.dll" />
+			<GameDlls Include="$(GameFolder)/UnityEngine.CoreModule.dll" />
+			<GameDlls Include="$(GameFolder)/UnityEngine.ImageConversionModule.dll" />
+			<GameDlls Include="$(GameFolder)/UnityEngine.IMGUIModule.dll" />
+			<GameDlls Include="$(GameFolder)/UnityEngine.InputLegacyModule.dll" />
+			<GameDlls Include="$(GameFolder)/UnityEngine.TextRenderingModule.dll" />
+			<GameDlls Include="$(GameFolder)/UnityEngine.UI.dll" />
+			<GameDlls Include="$(GameFolder)/UnityEngine.UIModule.dll" />
+		</ItemGroup>
+
+		<Copy SourceFiles="@(GameDlls)" DestinationFolder="../lib/" />
+		<Copy SourceFiles="@(PubliciseInputAssemblies)" DestinationFolder="../lib/" />
+
+	</Target>
+	
+	
   <!--Increment the version number after each build, resetting each day.-->
   <Import Project="AutoIncrement.targets" />
   <Target Name="AutoIncrement" BeforeTargets="PrepareForBuild">
