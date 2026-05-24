@@ -20,8 +20,14 @@
 	<LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	<minimumSupportedBuild>719533</minimumSupportedBuild>
-	</PropertyGroup>
+    <Configurations>Debug;Release;CI</Configurations>
 
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CI|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	
   <!--Default all references to CopyLocal False.-->
   <ItemDefinitionGroup>
     <Reference><Private>False</Private></Reference>
@@ -77,7 +83,16 @@
 	<DevFolder>$(ModFolder)\Dev\DEV_$(MSBuildProjectName)</DevFolder>
 
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'CI' ">
+		<InstallFolder>$(SolutionDir)\output\$(MSBuildProjectName)</InstallFolder>
+		<DistributeFolder>$(SolutionDir)\Distribute\</DistributeFolder>
+
+	</PropertyGroup>
+
+
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <InstallFolder>$(ModFolder)\Dev\DEV_$(MSBuildProjectName)</InstallFolder>
 	<LocalFolder>$(ModFolder)\local\$(MSBuildProjectName)</LocalFolder>
 

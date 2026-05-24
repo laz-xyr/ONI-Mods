@@ -32,7 +32,6 @@
 
 		<Copy SourceFiles="@(GameDlls)" DestinationFolder="../lib/" />
 		<Copy SourceFiles="@(PubliciseInputAssemblies)" DestinationFolder="../lib/" />
-
 	</Target>
 	
 	
@@ -75,7 +74,7 @@
   <!--Prevent game assemblies from being copied (and thus merged).-->
   <Target Name="ClearCopyLocalReferences" AfterTargets="ResolveAssemblyReferences">
     <ItemGroup>
-      <ReferenceCopyLocalPaths Remove="$(GameFolder)\* " />
+      <ReferenceCopyLocalPaths Remove="..\lib\* " />
     </ItemGroup>
   </Target>
 
@@ -94,7 +93,7 @@
 			OutputFile="$(TargetPath)"
 			InputAssemblies="@(InputAssemblies)"
 			Wildcards="true"
-      LibraryPath="$(GameFolder)"
+      LibraryPath="../lib"
       Parallel="true"/>
   </Target>
 
@@ -117,7 +116,7 @@
 		<RemoveDir Directories="$(DevFolder)" />
 	</Target>
 
-	<Target Name="ClearLocalFolder" AfterTargets="ClearInstallFolder" Condition="'$(ShouldDistribute)' != 'false' And Exists($(LocalFolder)) And '$(Configuration)' != 'Release' ">
+	<Target Name="ClearLocalFolder" AfterTargets="ClearInstallFolder" Condition="'$(ShouldDistribute)' != 'false' And Exists($(LocalFolder)) And '$(Configuration)' == 'Debug' ">
 		<ItemGroup>
 			<FilesToDelete Include="$(ModFolder)\local\$(MSBuildProjectName)\**\*.*" />
 		</ItemGroup>
@@ -157,7 +156,7 @@
   </Target>
 
   <!--If releasing, create a zipped version of the mod to distribute for manual downloads.-->
-  <Target Name="Zip" AfterTargets="CopyArtifactsToInstallFolder" Condition=" '$(Configuration)' == 'Release' And '$(ShouldDistribute)' != 'false' ">
+  <Target Name="Zip" AfterTargets="CopyArtifactsToInstallFolder" Condition=" '$(Configuration)' != 'Debug' And '$(ShouldDistribute)' != 'false' ">
     <CreateItem
       Include="$(InstallFolder)\**\*.*"
       Exclude="$(InstallFolder)\*.zip">

@@ -13,7 +13,7 @@
 		</ParameterGroup>
 
 		<Task>
-			<Reference Include="$(GameFolder)/Newtonsoft.Json.dll" />
+			<Reference Include="../lib/Newtonsoft.Json.dll" />
 			<Code Type="Class" Language="cs">
 				<![CDATA[
 using Microsoft.Build.Utilities;
