@@ -1,0 +1,36 @@
+# actions/labeler v5 path-based label rules
+# Labels must pre-exist on GitHub (Settings → Labels).
+# Required labels: frontend, backend, i18n, docs, cli, ci, plugin, feature, bug, enhancement, security, performance
+
+code:
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.cs'
+
+
+project:
+  - changed-files:
+    - any-glob-to-any-file:
+      - '*.props'
+      - '*.targets'
+      - '*..sln'
+      - '*.csproj'
+      - 'Directory.Build.props.default'
+
+i18n:
+  - changed-files:
+    - any-glob-to-any-file:
+      - '*.pot'
+      - '*.po'
+
+docs:
+  - changed-files:
+    - any-glob-to-any-file:
+      - '*.md'
+
+
+
+ci:
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/**'
