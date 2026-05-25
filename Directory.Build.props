@@ -21,7 +21,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	<minimumSupportedBuild>719533</minimumSupportedBuild>
     <Configurations>Debug;Release;CI</Configurations>
-
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	</PropertyGroup>
 	
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CI|AnyCPU'">
@@ -49,14 +50,14 @@
 	<Reference Include="Assembly-CSharp-firstpass_public" HintPath="../lib/Assembly-CSharp-firstpass_public.dll" Condition="'$(UsesAzeLib)' == 'true'" />
 	<Reference Include="Unity.TextMeshPro_public" HintPath="../lib/Unity.TextMeshPro_public.dll" Condition="'$(UsesAzeLib)' == 'true'" />
     <!--Meta References-->
-    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="*" Condition=" '$(ILRepack)' != 'false'"/>
-    <PackageReference Include ="MSBuildTasks" Version="*"/>
-	<PackageReference Include="Aze.Publicise.MSBuild.Task" Version="1.0.0" Condition="'$(UsesAzeLib)' == 'true'" />
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.45" Condition=" '$(ILRepack)' != 'false'"/>
+    <PackageReference Include ="MSBuildTasks" Version="1.5.0.183"/>
+	<PackageReference Include="Aze.Publicise.MSBuild.Task" Version="1.1.0" Condition="'$(UsesAzeLib)' == 'true'" />
 
 	  <!--<PackageReference Include="HarmonyAnalyzers" Version="1.0.0" />-->
     <!--<PackageReference Include="SuppressionAttributes" Version="1.0.0" />-->
     <!--<ProjectReference Include ="../AzeLib/AzeLib.csproj" Private ="true" Condition="'$(UsesAzeLib)' != 'false'"/>-->
-    <PackageReference Include="PLib" Version="*" Private="true" Condition="'$(UsesPLib)' == 'true'" />
+    <PackageReference Include="PLib" Version="4.24.0" Private="true" Condition="'$(UsesPLib)' == 'true'" />
 	  <ProjectReference Include="../Commons/Commons.csproj" Version="*" Private="true" Condition="'$(UseCommons)' == 'true'" />
 
 	  <!--Game References-->
