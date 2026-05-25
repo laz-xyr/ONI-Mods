@@ -51,7 +51,7 @@
 	<Reference Include="Unity.TextMeshPro_public" HintPath="../lib/Unity.TextMeshPro_public.dll" Condition="'$(UsesAzeLib)' == 'true'" />
     <!--Meta References-->
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.45" Condition=" '$(ILRepack)' != 'false'"/>
-    <PackageReference Include ="MSBuildTasks" Version="1.5.0.183"/>
+    <PackageReference Include ="MSBuildTasks" Version="1.5.0.235"/>
 	<PackageReference Include="Aze.Publicise.MSBuild.Task" Version="1.1.0" Condition="'$(UsesAzeLib)' == 'true'" />
 
 	  <!--<PackageReference Include="HarmonyAnalyzers" Version="1.0.0" />-->
