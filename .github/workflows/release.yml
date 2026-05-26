@@ -123,9 +123,9 @@ jobs:
         path: ${{ github.workspace }}/Distribute
     - name: Output artifact ID
       run:  |
-          name="${{ matrix.configuration }}"
-          file_id="${{ steps.artifact-upload-step.outputs.artifact-id }}"
-          echo "output_${name}=${file_id}" >> "$GITHUB_OUTPUT"
+          $name="${{ matrix.configuration }}"
+          $file_id="${{ steps.artifact-upload-step.outputs.artifact-id }}"
+          echo "output_${name}=${file_id}" >>  $env:GITHUB_OUTPUT
   release:
     needs: build
     runs-on: ubuntu-latest
