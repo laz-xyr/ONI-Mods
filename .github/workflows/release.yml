@@ -100,7 +100,7 @@ jobs:
       name: Restore the application
       run: |
           cd ${{ github.workspace }}
-          msbuild Configuration /t:Restore /p:Configuration=CI
+          msbuild $env:Configuration /t:Restore /p:Configuration=CI
       env:
         Configuration: ${{ matrix.configuration }}
 
