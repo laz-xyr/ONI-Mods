@@ -5,7 +5,7 @@
 code:
   - changed-files:
     - any-glob-to-any-file:
-      - '.cs'
+      - '*.cs'
 
 
 project:
