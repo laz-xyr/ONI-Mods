@@ -5,7 +5,7 @@ namespace GeoTuner_mod
 {
 
     [ConfigFile("config.json", true, true)]
-    [RestartRequired]
+    [RestartRequired] 
     internal class Options : SingletonOptions<Options>
     {
 
