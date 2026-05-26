@@ -53,12 +53,15 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [CI]
+        configuration: [GeoTuner_mod,Multiple_Power_Generator,SelectLastCarePackage,Unlock_Cheat]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
     outputs:
-      output1: ${{ steps.artifact-upload-step.outputs.artifact-id }}
+      output_1: ${{ steps.gen_output.outputs.GeoTuner_mod }}
+      output_2: ${{ steps.gen_output.outputs.Multiple_Power_Generator }}
+      output_3: ${{ steps.gen_output.outputs.SelectLastCarePackage }}
+      output_4: ${{ steps.gen_output.outputs.Unlock_Cheat }}
     env:
       Solution_Name: ONI-Mods.sln                       # Replace with your solution name, i.e. MyWpfApp.sln.
 
@@ -97,7 +100,7 @@ jobs:
       name: Restore the application
       run: |
           cd ${{ github.workspace }}
-          msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+          msbuild Configuration /t:Restore /p:Configuration=CI
       env:
         Configuration: ${{ matrix.configuration }}
 
@@ -107,7 +110,7 @@ jobs:
       run: |
         cd ${{ github.workspace }}
         ls lib/
-        msbuild $env:Solution_Name /t:Rebuild /p:Configuration=$env:Configuration
+        msbuild $env:Configuration /t:Rebuild /p:Configuration=CI
       env:
         Configuration: ${{ matrix.configuration }}
 
@@ -116,12 +119,17 @@ jobs:
       uses: actions/upload-artifact@v7
       id: artifact-upload-step
       with:
-        name: ONI-Mods
+        name: ONI-Mods-${{ matrix.configuration }}
         path: ${{ github.workspace }}/Distribute
+    - name: Output artifact ID
+      run:  |
+          name="${{ matrix.configuration }}"
+          file_id="${{ steps.artifact-upload-step.outputs.artifact-id }}"
+          echo "output_${name}=${file_id}" >> "$GITHUB_OUTPUT"
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.ref, 'refs/tags/') }}
+    #if: ${{ startsWith(github.ref, 'refs/tags/') }}
     permissions:
       contents: write
     steps:
@@ -129,12 +137,13 @@ jobs:
     - name: Download Artifact
       uses: actions/download-artifact@v8
       with:
-        artifact-ids: ${{ needs.build.outputs.output1 }}
+        artifact-ids: ${{ needs.build.outputs.output_1 }},${{ needs.build.outputs.output_2 }},${{ needs.build.outputs.output_3 }},${{ needs.build.outputs.output_4 }}
         path: ./release
 
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v3
+      if: ${{ startsWith(github.ref, 'refs/tags/') }}
       with:
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}
