@@ -137,9 +137,13 @@ jobs:
     - name: Download Artifact
       uses: actions/download-artifact@v8
       with:
-        artifact-ids: ${{ needs.build.outputs.output_1 }},${{ needs.build.outputs.output_2 }},${{ needs.build.outputs.output_3 }},${{ needs.build.outputs.output_4 }}
+        pattern: ONI-Mods-*
+        merge-multiple: true
         path: ./release
 
+    - name: echo
+      run: |
+         echo '${{ toJSON(needs.build.outputs) }}'
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v3
