@@ -55,6 +55,7 @@ namespace Unlock_Cheat
                 if (Options.Nosublimate) ManualPatch.ManualPatch_NS("Unlock_Cheat.Nosublimate");
                 if (Options.CircuitOverloaded) ManualPatch.ManualPatch_NS("Unlock_Cheat.CircuitOverloaded");
                 if (Options.MopTool) ManualPatch.ManualPatch_NS("Unlock_Cheat.MopTool_Patch");
+                if(Options.AutoGoToMedBed) ManualPatch.ManualPatch_NS("Unlock_Cheat.AutoGoToMedBed");
 
                 if (DlcManager.IsExpansion1Active()) {
                     if (Options.MutantPlant) ManualPatch.ManualPatch_NS("Unlock_Cheat.MutantPlants");
