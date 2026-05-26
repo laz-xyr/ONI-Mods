@@ -53,15 +53,9 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [GeoTuner_mod,Multiple_Power_Generator,SelectLastCarePackage,Unlock_Cheat]
+        configuration: [GeoTuner_mod, Multiple_Power_Generator, SelectLastCarePackage, Unlock_Cheat]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
-    outputs:
-      output_GeoTuner_mod: ${{ steps.gen_output.outputs.output_GeoTuner_mod }}
-      output_Multiple_Power_Generator: ${{ steps.gen_output.outputs.output_Multiple_Power_Generator }}
-      output_SelectLastCarePackage: ${{ steps.gen_output.outputs.output_SelectLastCarePackage }}
-      output_Unlock_Cheat: ${{ steps.gen_output.outputs.output_Unlock_Cheat }}
     env:
       Solution_Name: ONI-Mods.sln                       # Replace with your solution name, i.e. MyWpfApp.sln.
 
@@ -121,15 +115,10 @@ jobs:
         name: ONI-Mods-${{ matrix.configuration }}
         path: ${{ github.workspace }}/Distribute/${{ matrix.configuration }}.zip
         archive: false
-
-    - name: Output artifact ID
-      run:  |
-          $name="${{ matrix.configuration }}"
-          $file_id="${{ steps.artifact-upload-step.outputs.artifact-id }}"
-          echo "output_${name}=${file_id}" >>  $env:GITHUB_OUTPUT
           
   release:
     needs: build
+    if: ${{ startsWith(github.ref, 'refs/tags/') }}
     runs-on: ubuntu-latest
     #if: ${{ startsWith(github.ref, 'refs/tags/') }}
     permissions:
@@ -144,17 +133,8 @@ jobs:
         skip-decompress: true
         path: ./release
 
-    - name: echo
-      run: |
-         ls ./release
-         echo "${{ needs.build.outputs }}"
-         a=${{ needs.build.outputs }}
-         echo "${{ needs.build.outputs.output_GeoTuner_mod }}"
-         echo "${{ toJSON(needs.build.outputs) }}"
-
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v3
-      if: ${{ startsWith(github.ref, 'refs/tags/') }}
       with:
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}
