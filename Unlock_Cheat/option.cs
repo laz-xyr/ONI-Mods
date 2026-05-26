@@ -29,7 +29,11 @@ namespace Unlock_Cheat
         public bool Conduit { get; set; }
 
         [JsonProperty]
-        [Option("物质挥发", "禁止物质挥发(除氧石).", null)]
+        [Option("自动前往诊疗床", "复制人受伤害后自动前往医疗床.", null)]
+        public bool AutoGoToMedBed { get; set; } = true;
+
+        [JsonProperty]
+        [Option("物质挥发", "禁止物质挥发(除氧石).", "禁止物质挥发")]
         public bool Nosublimate { get; set; }
 
         [JsonProperty]

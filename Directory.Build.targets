@@ -36,17 +36,41 @@
 	
 	
   <!--Increment the version number after each build, resetting each day.-->
-  <Import Project="AutoIncrement.targets" />
-  <Target Name="AutoIncrement" BeforeTargets="PrepareForBuild">
-    <AutoIncrement Path="$(IntermediateOutputPath)">
-      <Output
-        PropertyName="ProjectRevision"
-        TaskParameter="Revision" />
-    </AutoIncrement>
-    <PropertyGroup>
-      <Version>$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day).$(ProjectRevision)</Version>
-    </PropertyGroup>
-  </Target>
+	<Target Name="AutoIncrement" BeforeTargets="PrepareForBuild">
+		<PropertyGroup>
+			<_RevisionFile>$(IntermediateOutputPath)revision.txt</_RevisionFile>
+			<_Today>$([System.DateTime]::Now.ToString("yyyyMMdd"))</_Today>
+		</PropertyGroup>
+
+		<!-- 读取旧值 -->
+		<ReadLinesFromFile File="$(_RevisionFile)" Condition="Exists('$(_RevisionFile)')">
+			<Output TaskParameter="Lines" ItemName="_OldRevision" />
+		</ReadLinesFromFile>
+
+		<!-- 判断是否需要重置 -->
+		<PropertyGroup Condition="'@(_OldRevision)' != ''">
+			<_OldLine>@(_OldRevision)</_OldLine>
+			<_OldDate>$(_OldLine.Substring(0,8))</_OldDate>
+			<_OldRev>$(_OldLine.Substring(9))</_OldRev>
+		</PropertyGroup>
+
+		<PropertyGroup Condition="'$(_Today)' != '$(_OldDate)'">
+			<_Revision>0</_Revision>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(_Today)' == '$(_OldDate)'">
+			<_Revision>$([MSBuild]::Add($(_OldRev), 1))</_Revision>
+		</PropertyGroup>
+
+		<!-- 写回 -->
+		<WriteLinesToFile File="$(_RevisionFile)"
+						  Lines="$(_Today)|$(_Revision)"
+						  Overwrite="true" />
+
+		<PropertyGroup>
+			<ProjectRevision>$(_Revision)</ProjectRevision>
+			<Version>$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day).$(_Revision)</Version>
+		</PropertyGroup>
+	</Target>
 
   <!--Create and update the mod_info and mod file.-->
   <Target Name="WriteModInfoFile" BeforeTargets="PreBuildEvent">
