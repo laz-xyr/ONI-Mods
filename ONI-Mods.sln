@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		Directory.Build.targets = Directory.Build.targets
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multiple_Power_Generator", "Multiple Power Generator\Multiple_Power_Generator.csproj", "{82BC8CDD-752D-49E2-B467-63F1821B365D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multiple_Power_Generator", "Multiple_Power_Generator\Multiple_Power_Generator.csproj", "{82BC8CDD-752D-49E2-B467-63F1821B365D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons", "Commons\Commons.csproj", "{5D45BE6C-B00B-497D-955B-67998974B712}"
 EndProject
