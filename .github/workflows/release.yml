@@ -58,10 +58,10 @@ jobs:
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
     outputs:
-      output_1: ${{ steps.gen_output.outputs.GeoTuner_mod }}
-      output_2: ${{ steps.gen_output.outputs.Multiple_Power_Generator }}
-      output_3: ${{ steps.gen_output.outputs.SelectLastCarePackage }}
-      output_4: ${{ steps.gen_output.outputs.Unlock_Cheat }}
+      output_GeoTuner_mod: ${{ steps.gen_output.outputs.GeoTuner_mod }}
+      output_Multiple_Power_Generator: ${{ steps.gen_output.outputs.Multiple_Power_Generator }}
+      output_SelectLastCarePackage: ${{ steps.gen_output.outputs.SelectLastCarePackage }}
+      output_Unlock_Cheat: ${{ steps.gen_output.outputs.Unlock_Cheat }}
     env:
       Solution_Name: ONI-Mods.sln                       # Replace with your solution name, i.e. MyWpfApp.sln.
 
@@ -121,11 +121,14 @@ jobs:
       with:
         name: ONI-Mods-${{ matrix.configuration }}
         path: ${{ github.workspace }}/Distribute
+        archive: false
+
     - name: Output artifact ID
       run:  |
           $name="${{ matrix.configuration }}"
           $file_id="${{ steps.artifact-upload-step.outputs.artifact-id }}"
           echo "output_${name}=${file_id}" >>  $env:GITHUB_OUTPUT
+          
   release:
     needs: build
     runs-on: ubuntu-latest
@@ -143,6 +146,7 @@ jobs:
 
     - name: echo
       run: |
+         ls ./release
          echo '${{ toJSON(needs.build.outputs) }}'
 
     - name: Create GitHub Release
