@@ -87,7 +87,6 @@ jobs:
       env:
         cache-name: cache-mod
       with:
-        # npm cache files are stored in `~/.npm` on Linux/macOS
         path: ./Distribute
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ github.ref_name }}-${{ matrix.configuration }}
         restore-keys: |
@@ -120,7 +119,7 @@ jobs:
       id: artifact-upload-step
       with:
         name: ONI-Mods-${{ matrix.configuration }}
-        path: ${{ github.workspace }}/Distribute
+        path: ${{ github.workspace }}/Distribute/${{ matrix.configuration }}.zip
         archive: false
 
     - name: Output artifact ID
