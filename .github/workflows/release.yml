@@ -139,7 +139,7 @@ jobs:
     - name: Download Artifact
       uses: actions/download-artifact@v8
       with:
-        pattern: ONI-Mods-*
+        pattern: *.zip
         merge-multiple: true
         path: ./release
 
