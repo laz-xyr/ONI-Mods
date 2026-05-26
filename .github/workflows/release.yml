@@ -148,8 +148,9 @@ jobs:
       run: |
          ls ./release
          echo "${{ needs.build.outputs }}"
+         a=${{ needs.build.outputs }}
          echo "${{ needs.build.outputs.output_GeoTuner_mod }}"
-         echo "${{ toJSON(needs.build.outputs) }}"
+         echo "${{ toJSON(a) }}"
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v3
